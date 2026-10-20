@@ -1,6 +1,86 @@
+:root {
+    --primary-colour: #1e3a5f;
+    --accent-colour: #639fff;
+
+    --heading-size: clamp(1.75rem, 5vw, 2.5rem);
+
+    --spacing-small: 1rem;
+    --spacing-medium: 1.25rem;
+    --spacing-section: 2rem;
+}
+
+header {
+    background: var(--primary-colour);
+    padding: var(--spacing-medium);
+}
+
+h1 {
+    font-size: var(--heading-size);
+    color: var(--primary-colour);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 90%;
+    max-width: 71.25rem;
+    margin: 0 auto;
+}
+
+.card {
+    width: 100%;
+    max-width: 100%;
+    padding: var(--spacing-small);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-small);
+}
+
+.content-section {
+    padding-block: var(--spacing-section);
+}
+
+.nav-link,
+.btn,
+.navbar-toggler {
+    min-height: 2.75rem;
+}
 
 .active {
     text-decoration: underline;
-    text-decoration-color: #639fff;
-    text-decoration-thickness: 3px;
+    text-decoration-color: var(--accent-colour);
+    text-decoration-thickness: 0.1875rem;
+}
+
+/* Focus styles for accessibility - ie. keyboard-only users. */
+a:focus-visible,
+button:focus-visible {
+    outline: 0.1875rem solid var(--accent-colour);
+    outline-offset: 0.1875rem;
+}
+
+/* ====== Change columns based on screen size using media queries. ====== */
+
+/* Tablet: two equal columns. */
+@media (min-width: 600px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop: three columns and more space between sections. */
+@media (min-width: 900px) {
+    :root {
+        --spacing-section: 3rem;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
