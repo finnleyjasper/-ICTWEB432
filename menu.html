@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- ===== PAGE SETTINGS ===== -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Cool Beans Cafe | Menu</title>
 
+        <!-- Bootstrap CSS imports. -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
+        <!-- Custom CSS loads after Bootstrap to apply the cafe colours and layout overrides. -->
         <link rel="stylesheet" href="styles/style.css">
 
     </head>
     <body>
 
+        <!-- ===== HEADER AND NAVIGATION ===== -->
         <header>
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <!-- Bootstrap navbar-expand-md shows expanded links from 768px; navbar-dark styles navigation for a dark background. -->
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <!-- Bootstrap container centres the content. -->
                 <div class="container">
-                    <a class="navbar-brand" href="index.html">Cool Beans Cafe</a>
+                    <!-- navbar-brand styles the cafe name and home link on the left. -->
+                    <a class="navbar-brand" href="index.html">Cool Beans Cafe - Home</a>
 
+                    <!-- navbar-toggler displays the hamburger button; data-bs-target connects it to the collapsible menu below. -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
+                    <!-- Bootstrap collapse hides these links on mobile until the toggler opens them. -->
                     <div class="collapse navbar-collapse" id="mainNav">
+                        <!-- navbar-nav styles the link list; ms-auto pushes it to the right in the expanded navigation. -->
                         <ul class="navbar-nav ms-auto">
+                            <!-- nav-item and nav-link style each navigation entry; active marks the current page. -->
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                             <li class="nav-item"><a class="nav-link active" href="menu.html">Menu</a></li>
@@ -33,16 +44,135 @@
             </nav>
         </header>
 
+        <!-- ===== MAIN PAGE CONTENT ===== -->
         <main class="container content-section">
 
-            <h1>Menu</h1>
+            <!-- Bootstrap visually-hidden retains the main heading for screen readers. -->
+            <h1 class="visually-hidden">Our Menu</h1>
+            <!-- ===== DOWNLOAD MENU: btn, btn-primary and btn-lg style it as a large button ===== -->
+            <div class="menu-download text-center">
+                <a class="btn btn-primary btn-lg menu-download-link" href="downloads/cool-beans-menu.txt" download>Download Menu</a>
+            </div>
+
+            <!-- Bootstrap row and g-5 create a grid with gutters; align-items-center vertically centres the columns. -->
+            <div class="row g-5 align-items-center">
+                <!-- ===== DRINKS: col-12 uses full width on mobile; col-md-8 uses eight of twelve columns from 768px ===== -->
+                <section class="col-12 col-md-8" aria-labelledby="drinks-heading">
+                    <h2 id="drinks-heading" class="menu-heading mb-4">Drinks</h2>
+                    <!-- list-unstyled removes bullets; mb-0 removes the list bottom margin. h5 sizes item headings and mb-0 removes description margins. -->
+                    <ul class="list-unstyled mb-0">
+                            <li class="menu-item">
+                                <h3 class="h5">Flat White - <span class="menu-price">$4.50</span></h3>
+                                <p class="mb-0">A double espresso with silky steamed milk and a thin layer of microfoam.</p>
+                            </li>
+                            <li class="menu-item">
+                                <h3 class="h5">Cappuccino - <span class="menu-price">$4.50</span></h3>
+                                <p class="mb-0">Rich espresso topped with steamed milk, airy foam and a dusting of chocolate.</p>
+                            </li>
+                            <li class="menu-item">
+                                <h3 class="h5">Long Black - <span class="menu-price">$4.00</span></h3>
+                                <p class="mb-0">A double espresso poured over hot water for a bold, smooth coffee.</p>
+                            </li>
+                            <li class="menu-item">
+                                <h3 class="h5">Chai Latte - <span class="menu-price">$5.00</span></h3>
+                                <p class="mb-0">Warming chai spices blended with steamed milk for something sweet.</p>
+                            </li>
+                            <li class="menu-item">
+                                <h3 class="h5">Hot Chocolate - <span class="menu-price">$5.00</span></h3>
+                                <p class="mb-0">Rich drinking chocolate stirred through steamed milk.</p>
+                            </li>
+                            <li class="menu-item">
+                                <h3 class="h5">Iced Latte - <span class="menu-price">$5.50</span></h3>
+                                <p class="mb-0">Espresso and cold milk served over ice for a refreshing drink.</p>
+                            </li>
+                    </ul>
+                </section>
+                <!-- Image column: full width on mobile, four of twelve columns from 768px. -->
+                <div class="col-12 col-md-4">
+                    <img class="menu-image" src="styles/images/drink.png" alt="A latte with leaf-shaped foam art beside a black coffee." />
+                </div>
+            </div>
+
+            <!-- Custom menu-divider styling separates the menu categories. -->
+            <hr class="menu-divider">
+
+            <!-- Bootstrap row and g-5 create a grid with gutters; align-items-center vertically centres the columns. -->
+            <div class="row g-5 align-items-center">
+                <!-- ===== SWEETS: order-md-2 moves the text to the right from 768px; text-end right-aligns its content ===== -->
+                <section class="col-12 col-md-8 order-md-2 text-end" aria-labelledby="sweets-heading">
+                    <h2 id="sweets-heading" class="menu-heading mb-4">Sweets</h2>
+                    <!-- list-unstyled removes bullets; mb-0 removes the list bottom margin. h5 sizes item headings and mb-0 removes description margins. -->
+                    <ul class="list-unstyled mb-0">
+                        <li class="menu-item">
+                            <h3 class="h5">Chocolate Brownie - <span class="menu-price">$5.50</span></h3>
+                            <p class="mb-0">A rich chocolate brownie with a soft centre and crisp top.</p>
+                        </li>
+                        <li class="menu-item">
+                            <h3 class="h5">Blueberry Muffin - <span class="menu-price">$5.00</span></h3>
+                            <p class="mb-0">A fluffy muffin filled with blueberries and finished with a golden crumb.</p>
+                        </li>
+                        <li class="menu-item">
+                            <h3 class="h5">Banana Bread - <span class="menu-price">$5.50</span></h3>
+                            <p class="mb-0">A thick slice of banana bread, served toasted with butter.</p>
+                        </li>
+                        <li class="menu-item">
+                            <h3 class="h5">Lemon Slice - <span class="menu-price">$4.50</span></h3>
+                            <p class="mb-0">A tangy lemon slice with a buttery biscuit base and smooth icing.</p>
+                        </li>
+                    </ul>
+                </section>
+                <!-- order-md-1 moves the sweets image to the left from 768px; the text remains first on mobile. -->
+                <div class="col-12 col-md-4 order-md-1">
+                    <img class="menu-image" src="styles/images/sweet.png" alt="Iced cake slices on a baking tray and a small plate." />
+                </div>
+            </div>
+
+            <!-- Custom menu-divider styling separates the menu categories. -->
+            <hr class="menu-divider">
+
+            <!-- Bootstrap row and g-5 create a grid with gutters; align-items-center vertically centres the columns. -->
+            <div class="row g-5 align-items-center">
+                <!-- ===== SAVOURY: eight-column text area with a four-column image on the right from 768px ===== -->
+                <section class="col-12 col-md-8" aria-labelledby="savoury-heading">
+                    <h2 id="savoury-heading" class="menu-heading mb-4">Savoury</h2>
+                    <!-- list-unstyled removes bullets; mb-0 removes the list bottom margin. h5 sizes item headings and mb-0 removes description margins. -->
+                    <ul class="list-unstyled mb-0">
+                        <li class="menu-item">
+                            <h3 class="h5">Ham and Cheese Toastie - <span class="menu-price">$9.50</span></h3>
+                            <p class="mb-0">Golden toasted sourdough filled with smoked ham and melted cheddar.</p>
+                        </li>
+                        <li class="menu-item">
+                            <h3 class="h5">Tomato and Mozzarella Toastie - <span class="menu-price">$9.00</span></h3>
+                            <p class="mb-0">Toasted sourdough with ripe tomato, mozzarella and basil pesto.</p>
+                        </li>
+                        <li class="menu-item">
+                            <h3 class="h5">Spinach and Feta Roll - <span class="menu-price">$7.50</span></h3>
+                            <p class="mb-0">Flaky pastry wrapped around a savoury spinach and feta filling.</p>
+                        </li>
+                        <li class="menu-item">
+                            <h3 class="h5">Eggs Benedict - <span class="menu-price">$18.50</span></h3>
+                            <p class="mb-0">Poached eggs and smoked ham on toasted English muffins, topped with creamy hollandaise sauce.</p>
+                        </li>
+                    </ul>
+                </section>
+                <!-- Image column: full width on mobile, four of twelve columns from 768px. -->
+                <div class="col-12 col-md-4">
+                    <img class="menu-image" src="styles/images/savoury.png" alt="Eggs Benedict topped with hollandaise, served with a side salad." />
+                </div>
+            </div>
 
         </main>
 
-        <footer>
-
+        <!-- ===== FOOTER ===== -->
+        <footer class="py-3 text-center">
+            <div class="container">
+                <!-- mb-1 adds a small bottom margin; mb-0 removes the bottom margin from the final paragraph. -->
+                <p class="mb-1">Cool Beans Cafe &copy; 2026</p>
+                <p class="mb-0">All images sourced from <a href="https://unsplash.com/">Unsplash</a> under the <a href="https://unsplash.com/license">Unsplash License</a>.</p>
+            </div>
         </footer>
 
+        <!-- Bootstrap JavaScript bundle enables the hamburger menu collapse behaviour. -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
     </body>

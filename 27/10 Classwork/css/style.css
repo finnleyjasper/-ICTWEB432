@@ -1,0 +1,161 @@
+body {
+
+
+  margin: 0;
+
+
+  font-family: "Trebuchet MS", Arial, sans-serif;
+
+
+  font-size: 16px;
+
+
+  color: #293c32;
+
+
+  background: #f6f3eb;
+
+
+}
+
+
+
+
+
+.site-header {
+
+
+  background: #244b3c;
+
+
+  padding: 20px;
+
+
+}
+
+
+
+
+
+.site-header a {
+
+
+  color: #ffffff;
+
+
+  text-decoration: none;
+
+
+}
+h1 {
+
+
+  font-size: 40px;
+
+
+  color: #244b3c;
+
+
+}
+
+
+
+
+
+.btn {
+
+
+  background: #e5bb79;
+
+
+  color: #244b3c;
+
+
+  padding: 12px 24px;
+
+
+  border-radius: 8px;
+
+
+  text-decoration: none;
+
+
+}
+
+
+
+
+
+.card {
+
+
+  width: 300px;
+
+
+  padding: 16px;
+
+
+  background: #ffffff;
+
+
+  border-radius: 8px;
+
+
+}
+
+
+
+
+
+img {
+
+
+  width: 600px;
+
+
+}
+
+/* Cosmetic details: keep the original layout and sizing. */
+h1,
+h2,
+.logo {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+h2 {
+  color: #244b3c;
+}
+
+.hero {
+  background: #e8eddf;
+}
+
+.card {
+  box-shadow: 0 3px 12px rgba(36, 75, 60, 0.08);
+}
+
+.card img {
+  border-radius: 6px;
+}
+
+.site-footer {
+  color: #244b3c;
+}
+
+.site-header a:hover {
+  color: #e5bb79;
+}
+
+.btn:hover {
+  background: #d9aa63;
+}
+
+a:focus-visible {
+  outline: 3px solid #9a571e;
+  outline-offset: 4px;
+}

@@ -1,6 +1,18 @@
+/* Load the heading and body fonts from Google Fonts. */
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lato:wght@400;700&display=swap");
+
+/* ===== GLOBAL SETTINGS ===== */
+
 :root {
-    --primary-colour: #1e3a5f;
-    --accent-colour: #639fff;
+    /* Approximate visual balance: 70% primary, 25% complementary, 5% branding. */
+    --primary-colour: #f5ead8; /* Warm cream: main backgrounds. */
+    --complementary-colour: #4b3026; /* Coffee brown: headings, navigation and footer. */
+    --branding-colour: #a33e24; /* Terracotta: buttons and small highlights. */
+    --black: #000000;
+    --white: #ffffff;
+
+    --body-font: 'Lato', Arial, Helvetica, sans-serif;
+    --heading-font: 'Bree Serif', Georgia, 'Times New Roman', serif;
 
     --heading-size: clamp(1.75rem, 5vw, 2.5rem);
 
@@ -9,14 +21,54 @@
     --spacing-section: 2rem;
 }
 
+
+/* ===== SEMANTIC ELEMENTS AND TYPOGRAPHY ===== */
+
+/* Flex layout keeps the footer at the bottom without covering content. */
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--body-font);
+    background-color: var(--primary-colour);
+    color: var(--black);
+}
+
+main {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+}
+
+header,
+footer {
+    background-color: var(--complementary-colour);
+    color: var(--white);
+}
+
 header {
-    background: var(--primary-colour);
     padding: var(--spacing-medium);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--heading-font);
+    font-weight: 400;
 }
 
 h1 {
     font-size: var(--heading-size);
-    color: var(--primary-colour);
+    color: var(--complementary-colour);
+}
+
+h2,
+h3 {
+    color: var(--complementary-colour);
 }
 
 img {
@@ -24,26 +76,58 @@ img {
     height: auto;
 }
 
+/* Visible outlines support keyboard navigation. */
+a:focus-visible,
+button:focus-visible {
+    outline: 0.1875rem solid var(--branding-colour);
+    outline-offset: 0.1875rem;
+}
+
+footer a,
+footer a:hover,
+footer a:focus-visible {
+    color: var(--white);
+}
+
+footer a:focus-visible {
+    outline-color: var(--white);
+}
+
+
+/* ===== SHARED LAYOUT ===== */
+
 .container {
     width: 90%;
     max-width: 71.25rem;
     margin: 0 auto;
 }
 
-.card {
-    width: 100%;
-    max-width: 100%;
-    padding: var(--spacing-small);
-}
-
-.card-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-small);
-}
-
 .content-section {
     padding-block: var(--spacing-section);
+}
+
+
+/* ===== SHARED BOOTSTRAP COMPONENTS ===== */
+
+.navbar-dark {
+    --bs-navbar-color: var(--white);
+    --bs-navbar-hover-color: var(--primary-colour);
+    --bs-navbar-active-color: var(--white);
+    --bs-navbar-brand-color: var(--white);
+    --bs-navbar-brand-hover-color: var(--primary-colour);
+    --bs-navbar-toggler-border-color: var(--white);
+}
+
+.btn-primary {
+    --bs-btn-color: var(--white);
+    --bs-btn-bg: var(--branding-colour);
+    --bs-btn-border-color: var(--branding-colour);
+    --bs-btn-hover-color: var(--white);
+    --bs-btn-hover-bg: var(--complementary-colour);
+    --bs-btn-hover-border-color: var(--complementary-colour);
+    --bs-btn-active-color: var(--white);
+    --bs-btn-active-bg: var(--complementary-colour);
+    --bs-btn-active-border-color: var(--complementary-colour);
 }
 
 .nav-link,
@@ -54,33 +138,259 @@ img {
 
 .active {
     text-decoration: underline;
-    text-decoration-color: var(--accent-colour);
+    text-decoration-color: var(--branding-colour);
     text-decoration-thickness: 0.1875rem;
 }
 
-/* Focus styles for accessibility - ie. keyboard-only users. */
-a:focus-visible,
-button:focus-visible {
-    outline: 0.1875rem solid var(--accent-colour);
-    outline-offset: 0.1875rem;
+.navbar .active {
+    text-decoration-color: var(--white);
 }
 
-/* ====== Change columns based on screen size using media queries. ====== */
+.navbar a:focus-visible,
+.navbar button:focus-visible {
+    outline-color: var(--white);
+}
 
-/* Tablet: two equal columns. */
-@media (min-width: 600px) {
-    .card-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+/* ===== HOME PAGE ===== */
+
+/* Images and dark overlays sit behind readable foreground text. */
+.home-hero,
+.home-menu-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--complementary-colour);
+    color: var(--white);
+}
+
+.home-background-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* ::before adds a black overlay at 70% opacity to darken the images. */
+.home-hero::before,
+.home-menu-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 70%);
+    z-index: -1;
+}
+
+.home-hero {
+    display: grid;
+    align-items: center;
+    min-height: 26rem;
+    padding-block: 4rem;
+}
+
+.home-hero h1,
+.home-menu-card h3 {
+    color: var(--white);
+}
+
+.home-hero h1 {
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    margin-bottom: 1rem;
+}
+
+.home-hero .lead {
+    font-size: clamp(1.25rem, 3vw, 2.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.home-menu-button {
+    width: 100%;
+    max-width: 24rem;
+    padding: 1rem;
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    text-decoration: underline;
+}
+
+.home-menu-section {
+    max-width: 85rem;
+}
+
+.home-section-heading {
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    margin-bottom: 2.5rem;
+}
+
+/* One column by default; the desktop media query below changes this to three. */
+.card-grid {
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-small);
+}
+
+.home-menu-card {
+    width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 14rem;
+    height: clamp(14rem, 18vw, 18rem);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    text-decoration: none;
+}
+
+.home-menu-card:hover {
+    color: var(--white);
+}
+
+.home-menu-card h3 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+}
+
+.home-menu-card:hover h3 {
+    text-decoration-thickness: 0.1875rem;
+}
+
+
+/* ===== MENU PAGE ===== */
+
+.menu-download {
+    margin-block: var(--spacing-section) calc(var(--spacing-section) * 2);
+}
+
+.menu-download-link {
+    width: 100%;
+    max-width: 30rem;
+    padding: 1.5rem;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+.menu-divider {
+    margin-block: var(--spacing-section);
+    border: 0;
+    border-top: 1px solid var(--complementary-colour);
+    opacity: 1;
+}
+
+.menu-heading {
+    font-size: var(--heading-size);
+    text-transform: uppercase;
+    scroll-margin-top: 2rem;
+}
+
+.menu-item {
+    padding-block: 1.25rem;
+}
+
+.menu-item:first-child {
+    padding-top: 0;
+}
+
+.menu-item p {
+    line-height: 1.8;
+}
+
+.menu-price {
+    color: var(--complementary-colour);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.menu-image {
+    display: block;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+
+/* ===== ABOUT AND FORM RESPONSE PAGES ===== */
+
+.about-page {
+    padding-block: clamp(2rem, 6vw, 6rem);
+}
+
+.about-heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 2rem;
+}
+
+.opening-hours {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.opening-hours dd {
+    margin-bottom: 0;
+}
+
+.location-map {
+    display: block;
+    width: 100%;
+    height: 21rem;
+    border: 0;
+    border-radius: 0.5rem;
+}
+
+.contact-details {
+    margin-bottom: 2.5rem;
+}
+
+.about-page .form-control {
+    background-color: var(--white);
+    color: var(--black);
+    border-color: var(--complementary-colour);
+    min-height: 3rem;
+}
+
+.about-page .form-control:focus {
+    outline: 0.1875rem solid var(--branding-colour);
+    outline-offset: 0.1875rem;
+    box-shadow: none;
+}
+
+.about-page a {
+    color: var(--complementary-colour);
+}
+
+
+/* ===== RESPONSIVE RULES: NAVIGATION, SHARED SPACING AND HOME CARDS, ABOUT COLUMNS ===== */
+
+/* Mobile: align the collapsed navigation links with the hamburger button. */
+@media (max-width: 767.98px) {
+    .navbar-nav {
+        align-items: flex-end;
+        text-align: right;
     }
 }
 
-/* Desktop: three columns and more space between sections. */
+/* Desktop: increase shared section spacing and display three homepage cards. */
 @media (min-width: 900px) {
     :root {
         --spacing-section: 3rem;
     }
 
     .card-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Large screens: add room between the About page columns. */
+@media (min-width: 992px) {
+    .about-columns {
+        --bs-gutter-x: 6rem;
     }
 }

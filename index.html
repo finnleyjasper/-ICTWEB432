@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- ===== PAGE SETTINGS ===== -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Cool Beans Cafe | Home</title>
 
+        <!-- Bootstrap CSS imports. -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
+        <!-- Custom CSS loads after Bootstrap to apply the cafe colours and layout overrides. -->
         <link rel="stylesheet" href="styles/style.css">
 
     </head>
     <body>
 
+        <!-- ===== HEADER AND NAVIGATION ===== -->
         <header>
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <!-- Bootstrap navbar-expand-md shows expanded links from 768px; navbar-dark styles navigation for a dark background. -->
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <!-- Bootstrap container centres the content. -->
                 <div class="container">
-                    <a class="navbar-brand" href="index.html">Cool Beans Cafe</a>
+                    <!-- navbar-brand styles the cafe name and home link on the left. -->
+                    <a class="navbar-brand" href="index.html">Cool Beans Cafe - Home</a>
 
+                    <!-- navbar-toggler displays the hamburger button; data-bs-target connects it to the collapsible menu below. -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
+                    <!-- Bootstrap collapse hides these links on mobile until the toggler opens them. -->
                     <div class="collapse navbar-collapse" id="mainNav">
+                        <!-- navbar-nav styles the link list; ms-auto pushes it to the right in the expanded navigation. -->
                         <ul class="navbar-nav ms-auto">
+                            <!-- nav-item and nav-link style each navigation entry; active marks the current page. -->
                             <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                             <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
@@ -33,62 +44,63 @@
             </nav>
         </header>
 
+        <!-- ===== MAIN PAGE CONTENT ===== -->
         <main>
 
-            <!-- ===== HERO SECTION ===== -->
-            <section>
-                <div class="bg-light content-section text-center">
-                    <div class="container">
-                        <h1>Welcome to Cool Beans Cafe</h1>
-                        <p class="lead">A cozy place to enjoy your favorite coffee and snacks.</p>
-                        <a class="btn btn-primary btn-lg" href="menu.html">View Menu</a>
-                    </div>
+            <!-- ===== HERO: custom CSS positions the image and overlay ===== -->
+            <section class="home-hero text-center" aria-labelledby="welcome-heading">
+                <img class="home-background-image" src="styles/images/coffeebeans.png" alt="" />
+                <!-- Bootstrap container centres the content -->
+                <div class="container">
+                    <h1 id="welcome-heading">Cool Beans Cafe</h1>
+                    <!-- Bootstrap lead makes the introductory text larger. -->
+                    <p class="lead">Cool beans & great coffee.</p>
+                    <!-- btn, btn-primary and btn-lg provide a large button; custom CSS applies the branding colour. -->
+                    <a class="btn btn-primary btn-lg home-menu-button" href="menu.html">View Menu</a>
                 </div>
             </section>
 
-            <!-- ===== CARD SECTION ===== -->
-            <section class="container content-section">
-                <h2 class="text-center mb-4"> Why Visit Us?</h2>
-                    <div class="card-grid">
-                        <!-- ===== Card 1 ===== -->
+            <!-- ===== MENU CARDS: container centres the section; card-grid uses custom CSS media queries - rather than the Bootstrap grid ===== -->
+            <section class="container content-section home-menu-section" aria-labelledby="explore-heading">
+                <h2 id="explore-heading" class="text-center home-section-heading">Explore Our Menu</h2>
+                <div class="card-grid">
+                    <!-- Drinks card -->
+                    <a class="home-menu-card" href="menu.html#drinks-heading" aria-labelledby="drinks-card-title">
+                        <img class="home-background-image" src="styles/images/drink.png" alt="A latte with leaf-shaped foam art beside a black coffee." loading="lazy" />
                         <div>
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h3 class="card-title h5">Coffee!</h3>
-                                    <p class="card-text">We have coffee</p>
-                                </div>
-                            </div>
+                            <h3 id="drinks-card-title">Drinks</h3>
                         </div>
-
-                        <!-- ===== Card 2 ===== -->
+                    </a>
+                    <!-- Sweets card -->
+                    <a class="home-menu-card" href="menu.html#sweets-heading" aria-labelledby="sweets-card-title">
+                        <img class="home-background-image" src="styles/images/sweet.png" alt="Iced cake slices on a baking tray and a small plate." loading="lazy" />
                         <div>
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h3 class="card-title h5">Coffee!</h3>
-                                    <p class="card-text">We have coffee</p>
-                                </div>
-                            </div>
+                            <h3 id="sweets-card-title">Sweets</h3>
                         </div>
-
-                        <!-- ===== Card 3 ===== -->
+                    </a>
+                    <!-- Savoury card -->
+                    <a class="home-menu-card" href="menu.html#savoury-heading" aria-labelledby="savoury-card-title">
+                        <img class="home-background-image" src="styles/images/savoury.png" alt="Eggs Benedict topped with hollandaise, served with a side salad." loading="lazy" />
                         <div>
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h3 class="card-title h5">Coffee!</h3>
-                                    <p class="card-text">We have coffee</p>
-                                </div>
-                            </div>
+                            <h3 id="savoury-card-title">Savoury</h3>
                         </div>
-                    </div>
+                    </a>
+                </div>
             </section>
-
 
         </main>
 
-        <footer class="bg-dark text-white py-3 text-center">
-            <p class="mb-0">Cool Beans Cafe &copy; 2023</p>
+        <!-- ===== FOOTER ===== -->
+         <!-- py-3 adds vertical padding -->
+        <footer class="py-3 text-center">
+            <div class="container">
+                <!-- mb-1 adds a small bottom margin; mb-0 removes the bottom margin from the final paragraph. -->
+                <p class="mb-1">Cool Beans Cafe &copy; 2026</p>
+                <p class="mb-0">All images sourced from <a href="https://unsplash.com/">Unsplash</a> under the <a href="https://unsplash.com/license">Unsplash License</a>.</p>
+            </div>
         </footer>
 
+        <!-- Bootstrap JavaScript bundle enables the hamburger menu collapse behaviour. -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
     </body>
