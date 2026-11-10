@@ -264,6 +264,11 @@ footer a:focus-visible {
 
 /* ===== MENU PAGE ===== */
 
+.menu-page-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    padding: 2rem 1rem;
+}
+
 .menu-download {
     margin-block: var(--spacing-section) calc(var(--spacing-section) * 2);
 }
